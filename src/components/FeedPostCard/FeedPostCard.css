@@ -1,0 +1,245 @@
+.feed-post-card {
+    border-top: 1px solid var(--border);
+    padding: 16px 0 4px;
+}
+
+.feed-post-card:first-of-type {
+    border-top: none;
+    padding-top: 4px;
+}
+
+/* Pinned badge */
+.pinned-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.pin-icon {
+    font-size: 13px;
+}
+
+/* Header */
+.post-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.post-author-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.post-avatar {
+    flex-shrink: 0;
+}
+
+.post-avatar-img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+.post-avatar-initial {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.post-author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.post-author-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.post-timestamp {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.post-more-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: var(--text-muted);
+    transition: background 0.15s, color 0.15s;
+}
+
+.post-more-btn:hover {
+    background: var(--bg-sidebar-track, #F2F3F7);
+    color: var(--text-primary);
+}
+
+/* Body */
+.post-body {
+    margin-bottom: 14px;
+}
+
+.post-content {
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+/* Numbered steps */
+.post-steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.post-step-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text-primary);
+}
+
+.step-num {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    background: #DBEAFE;
+    color: #1D4ED8;
+    border-radius: var(--radius-xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11.5px;
+    font-weight: 700;
+}
+
+.step-text {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* Footer */
+.post-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+}
+
+.post-reactions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.reaction-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 10px;
+    border-radius: var(--radius-full);
+    font-size: 13px;
+    color: var(--text-secondary);
+    transition: background 0.15s, color 0.15s, transform 0.1s;
+}
+
+.reaction-btn:hover {
+    background: var(--bg-input);
+    color: var(--text-primary);
+}
+
+.reaction-btn:active {
+    transform: scale(0.92);
+}
+
+.reaction-btn.reacted {
+    color: #E11D48;
+}
+
+.reaction-emojis {
+    font-size: 15px;
+}
+
+.reaction-count {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.post-comments {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color 0.15s;
+}
+
+.post-comments:hover {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .step-num {
+    background: #1E3050;
+    color: #60A5FA;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .feed-post-card {
+        padding: 14px 0 4px;
+    }
+
+    .post-content {
+        font-size: 13px;
+    }
+
+    .post-author-name {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .post-footer {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .post-content {
+        font-size: 12.5px;
+    }
+
+    .post-step-item {
+        font-size: 12px;
+    }
+
+    .reaction-btn {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+
+    .post-comments {
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,196 @@
+.sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-inner {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 8px 8px;
+    position: relative;
+    scrollbar-width: none;
+}
+
+.sidebar-inner::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar-list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Sliding highlight pill behind selected day */
+.day-indicator {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: var(--row-height);
+    background: var(--bg-active-day);
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Day row */
+.day-row {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: color 0.15s;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-align: left;
+    width: 100%;
+    background: transparent;
+    border: none;
+}
+
+.day-row:hover:not(.selected) {
+    color: var(--text-primary);
+}
+
+.day-row.selected {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.day-row.locked {
+    color: var(--text-muted);
+}
+
+.day-label {
+    flex: 1;
+}
+
+/* Status icons */
+.status-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: var(--success);
+    border-radius: 50%;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.status-lock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    opacity: 0.5;
+}
+
+.status-clock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+}
+
+/* Bottom blur fade */
+.sidebar-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: linear-gradient(to bottom, transparent, var(--bg-sidebar));
+    pointer-events: none;
+}
+
+/* ── Dark mode overrides ── */
+[data-theme="dark"] .sidebar {
+    border-right-color: #202026;
+}
+
+[data-theme="dark"] .day-indicator {
+    background: #222228;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .day-row {
+    color: #606068;
+}
+
+[data-theme="dark"] .day-row.selected {
+    color: #FFFFFF;
+}
+
+[data-theme="dark"] .day-row:hover:not(.selected) {
+    color: #A8A8B0;
+}
+
+[data-theme="dark"] .day-row.locked {
+    color: #F5F1FFB7;
+}
+
+[data-theme="dark"] .status-lock {
+    color: #F5F1FFB7;
+    opacity: 1;
+}
+
+[data-theme="dark"] .status-clock {
+    color: #606068;
+}
+
+/* Responsive — horizontal scrolling strip on mobile */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        height: auto;
+    }
+
+    .sidebar-inner {
+        padding: 8px 12px;
+        overflow-x: auto;
+    }
+
+    .sidebar-list {
+        flex-direction: row;
+        gap: 6px;
+        min-width: max-content;
+    }
+
+    .day-indicator {
+        height: 100%;
+        width: var(--row-height);
+        top: 0;
+        transform: translateX(calc(var(--selected-index, 0) * (var(--row-height) + 6px))) !important;
+    }
+
+    .day-row {
+        flex-direction: column;
+        gap: 4px;
+        padding: 8px 10px;
+        height: auto !important;
+        min-width: 72px;
+        font-size: 12px;
+        border-radius: 10px;
+    }
+
+    .sidebar-fade {
+        display: none;
+    }
+}
